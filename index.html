@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Send GPS to Laptop</h1>
+<script>
+function sendGPS() {
+    if (!navigator.geolocation) return alert("Geolocation not supported");
+
+    navigator.geolocation.watchPosition(function(pos){
+        let lat = pos.coords.latitude;
+        let lng = pos.coords.longitude;
+        let speed = pos.coords.speed || 0;
+
+        // replace 192.168.X.X with your laptop IP
+        fetch(`http://192.168.1.100:5000/update?lat=${lat}&lng=${lng}&speed=${speed}`);
+    }, function(err){ console.log(err); }, { enableHighAccuracy:true, maximumAge:500 });
+}
+
+sendGPS();
+</script>
+</body>
+</html>
