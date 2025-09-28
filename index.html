@@ -12,7 +12,8 @@ function sendGPS() {
         let speed = pos.coords.speed || 0;
 
         // replace 192.168.X.X with your laptop IP
-        fetch(`http://192.168.1.100:5000/update?lat=${lat}&lng=${lng}&speed=${speed}`);
+        fetch('https://abcd1234.ngrok.io/update?lat=...&lng=...&speed=...')
+;
     }, function(err){ console.log(err); }, { enableHighAccuracy:true, maximumAge:500 });
 }
 
